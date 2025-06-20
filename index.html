@@ -109,7 +109,6 @@
       box-shadow: 0 32px 64px #06b6d444, 0 8px 32px #67e8f944;
       transition: 0.4s cubic-bezier(.42,.78,.34,.98);
     }
-    /* --- Remove the 2GB badge and its positioning --- */
     .zip-icon-outer {
       display: flex;
       flex-direction: column;
@@ -125,8 +124,10 @@
     .zip-icon-number {
       display: none !important;
     }
-    .zip-icon {
+    /* --- New file icon styles --- */
+    .file-icon {
       width: 104px;
+      height: 104px;
       margin-bottom: 0;
       background: linear-gradient(135deg, #f9fafb 60%, #06b6d422 100%);
       border-radius: 21px;
@@ -135,27 +136,28 @@
       padding: 18px 18px 24px 18px;
       position: relative;
       z-index: 5;
-      animation: floatImage 2.5s infinite alternate, zipGlow 2.2s infinite alternate, zoomIn 1s cubic-bezier(.42,.78,.34,.98);
-      /* Removed transform for mobile fix */
       transition: box-shadow 0.32s, transform 0.3s;
       display: block;
+      /* by default, no animation */
+      animation: none;
     }
-    .zip-icon:hover {
-      transform: rotateY(8deg) rotateX(-5deg) scale(1.14) perspective(600px);
-      box-shadow: 0 22px 54px 0 #06b6d499, 0 6px 20px #67e8f999;
+    /* PC/Desktop: no animation */
+    @media (min-width: 511px) {
+      .file-icon {
+        animation: none !important;
+      }
     }
-    @keyframes floatImage {
-      0% { transform: scale(1.1) translateY(0);}
-      100% { transform: scale(1.12) translateY(-12px);}
+    /* On mobile: animate up and down only */
+    @media (max-width: 510px) {
+      .file-icon {
+        animation: upDownMobile 1.8s infinite alternate cubic-bezier(.7,.2,.36,1.1);
+      }
     }
-    @keyframes zipGlow {
-      0% { box-shadow: 0 0 22px #06b6d444; }
-      100% { box-shadow: 0 0 54px #67e8f9cc; }
+    @keyframes upDownMobile {
+      0% { transform: translateY(0);}
+      100% { transform: translateY(-22px);}
     }
-    @keyframes fadeSlideIn {
-      from { opacity: 0; transform: translateY(44px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
+    /* Keep rest of your styles... */
     .file-type {
       font-weight: 700;
       font-size: 1.5rem;
@@ -345,7 +347,7 @@
       .header {font-size: 1.14rem; padding: 13px;}
       .container {padding: 13px 6px;}
       .zip-icon-outer {width: 65px; height: 65px;}
-      .zip-icon {width: 52px;}
+      .file-icon {width: 52px;}
       .file-type {font-size: 1.07rem;}
       .price-box {padding: 10px; font-size: 13px;}
       .secure-note {font-size: 12px;}
@@ -355,9 +357,8 @@
       .telegram-icon {width: 35px;}
       .trust-box {font-size: 12px;}
       .star-rating {font-size: 13px;}
-      /* --- Ensure icon stays centered and static --- */
       .zip-icon-outer {flex-direction: column !important; align-items: center !important; justify-content: flex-start !important;}
-      .zip-icon {margin-left: 0 !important; margin-right: 0 !important;}
+      .file-icon {margin-left: 0 !important; margin-right: 0 !important;}
     }
     @keyframes pulse {
       0%, 100% { transform: scale(1);}
@@ -368,9 +369,9 @@
       50% { transform: scale(1.06);}
       100% { transform: scale(1);}
     }
-    @keyframes zoomIn {
-      from { transform: scale(0.7); opacity: 0;}
-      to { transform: scale(1); opacity: 1;}
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(44px);}
+      to { opacity: 1; transform: translateY(0);}
     }
     @keyframes countdownBlink {
       0%, 100% { opacity: 1;}
@@ -387,50 +388,19 @@
   <div class="container" data-aos="fade-up">
     <div class="badge">🔥 30% OFF</div>
     <div class="zip-icon-outer">
-      <!-- Removed the 2 GB badge here -->
-      <!-- SVG montage 3D file icon -->
-      <svg width="110" height="110" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg"
-        class="zip-icon" style="box-shadow: 0 16px 54px 0 #06b6d488, 0 0px 0px #fff; background:linear-gradient(135deg,#f9fafb 60%,#67e8f933 100%);">
+      <!-- صورة الملف فقط! -->
+      <svg class="file-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="10" y="8" width="36" height="48" rx="7" fill="url(#filebg)" stroke="#06b6d4" stroke-width="2"/>
+        <path d="M46 14L54 22V56a6 6 0 0 1-6 6H16a6 6 0 0 1-6-6V14a6 6 0 0 1 6-6h24z" fill="#f9fafb" stroke="#06b6d4" stroke-width="2"/>
+        <rect x="20" y="28" width="24" height="4" rx="2" fill="#06b6d4" />
+        <rect x="20" y="38" width="24" height="4" rx="2" fill="#67e8f9" />
+        <rect x="20" y="48" width="16" height="4" rx="2" fill="#06b6d4" />
         <defs>
-          <linearGradient id="box1" x1="0" y1="0" x2="110" y2="110" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#06b6d4"/>
-            <stop offset="1" stop-color="#181f2f"/>
-          </linearGradient>
-          <linearGradient id="box2" x1="40" y1="20" x2="95" y2="95" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#f9fafb"/>
+          <linearGradient id="filebg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#d1f3fa"/>
             <stop offset="1" stop-color="#67e8f9"/>
           </linearGradient>
-          <linearGradient id="shine" x1="0" y1="0" x2="60" y2="30" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#fff" stop-opacity=".5"/>
-            <stop offset="1" stop-color="#fff" stop-opacity="0"/>
-          </linearGradient>
-          <filter id="shadow" x="0" y="65" width="110" height="30" filterUnits="userSpaceOnUse">
-            <feGaussianBlur stdDeviation="6" result="blur"/>
-            <feOffset dy="8"/>
-            <feFlood flood-color="#181f2f" flood-opacity="0.18"/>
-            <feComposite in2="blur" operator="in"/>
-            <feComposite in2="SourceGraphic" operator="over"/>
-          </filter>
         </defs>
-        <!-- Shadow -->
-        <ellipse cx="55" cy="90" rx="34" ry="10" fill="#000" fill-opacity=".14" filter="url(#shadow)"/>
-        <!-- Main Box -->
-        <rect x="18" y="25" width="74" height="60" rx="14" fill="url(#box1)" stroke="#06b6d4" stroke-width="2"/>
-        <!-- Top Flap -->
-        <rect x="28" y="13" width="54" height="22" rx="7" fill="url(#box2)" stroke="#06b6d4" stroke-width="1.5"/>
-        <!-- Shine -->
-        <rect x="22" y="30" width="30" height="18" rx="6" fill="url(#shine)"/>
-        <!-- Montage stripes -->
-        <rect x="62" y="37" width="6" height="30" rx="3" fill="#fff" fill-opacity=".18"/>
-        <rect x="72" y="37" width="6" height="30" rx="3" fill="#fff" fill-opacity=".13"/>
-        <!-- File tab -->
-        <rect x="47" y="50" width="16" height="8" rx="2" fill="#fff" stroke="#f9fafb" stroke-width="1"/>
-        <rect x="47" y="60" width="16" height="5" rx="2" fill="#f9fafb"/>
-        <!-- Icon -->
-        <rect x="38" y="41" width="9" height="9" rx="3" fill="#06b6d4" stroke="#f9fafb" stroke-width="1"/>
-        <rect x="63" y="41" width="9" height="9" rx="3" fill="#06b6d4" stroke="#f9fafb" stroke-width="1"/>
-        <!-- Decorative lines -->
-        <rect x="40" y="55" width="30" height="2.5" rx="1.25" fill="#fff" fill-opacity="0.22"/>
       </svg>
     </div>
     <div class="file-type">ZIP File</div>
