@@ -120,11 +120,9 @@
       height: 110px;
       z-index: 8;
     }
-    /* Hide the .zip-icon-number badge */
     .zip-icon-number {
       display: none !important;
     }
-    /* --- New file icon styles --- */
     .file-icon {
       width: 104px;
       height: 104px;
@@ -138,16 +136,13 @@
       z-index: 5;
       transition: box-shadow 0.32s, transform 0.3s;
       display: block;
-      /* by default, no animation */
       animation: none;
     }
-    /* PC/Desktop: no animation */
     @media (min-width: 511px) {
       .file-icon {
         animation: none !important;
       }
     }
-    /* On mobile: animate up and down only */
     @media (max-width: 510px) {
       .file-icon {
         animation: upDownMobile 1.8s infinite alternate cubic-bezier(.7,.2,.36,1.1);
@@ -157,7 +152,6 @@
       0% { transform: translateY(0);}
       100% { transform: translateY(-22px);}
     }
-    /* Keep rest of your styles... */
     .file-type {
       font-weight: 700;
       font-size: 1.5rem;
@@ -388,7 +382,6 @@
   <div class="container" data-aos="fade-up">
     <div class="badge">🔥 30% OFF</div>
     <div class="zip-icon-outer">
-      <!-- صورة الملف فقط! -->
       <svg class="file-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="10" y="8" width="36" height="48" rx="7" fill="url(#filebg)" stroke="#06b6d4" stroke-width="2"/>
         <path d="M46 14L54 22V56a6 6 0 0 1-6 6H16a6 6 0 0 1-6-6V14a6 6 0 0 1 6-6h24z" fill="#f9fafb" stroke="#06b6d4" stroke-width="2"/>
@@ -445,7 +438,7 @@
   <a href="https://t.me/yncyl" target="_blank" title="Contact on Telegram">
     <img src="https://img.icons8.com/color/48/telegram-app--v1.png" class="telegram-icon" alt="Telegram" />
   </a>
-  <p>Support: <a href="mailto:ademnebti460@gmail.com">ademnebti460@gmail.com</a></p>
+  <p>Support: <a href=""></a></p>
 </div>
 
 <div class="legal-box" data-aos="fade-up">
@@ -504,6 +497,17 @@
         setTimeout(() => {
           window.location.href = "https://drive.google.com/uc?export=download&id=1KSURn3iRVrcQwYVIMoIObERqNUsyJdCx";
         }, 1000);
+      }
+    }
+  });
+
+  // الحل الإضافي لتفعيل زر الدفع تلقائياً بعد العودة للصفحة من الهاتف
+  document.addEventListener("visibilitychange", function() {
+    if (!document.hidden) {
+      const button = document.querySelector('.pay-button');
+      if (button) {
+        button.disabled = false;
+        button.textContent = "🛡️ Get Instant Access";
       }
     }
   });
