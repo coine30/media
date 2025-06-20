@@ -138,17 +138,23 @@
       display: block;
       animation: none;
     }
+    /* PC/Desktop: no animation */
     @media (min-width: 511px) {
       .file-icon {
         animation: none !important;
       }
     }
+    /* On mobile: animate up and down only (no left/right, no rotate, no skew) */
     @media (max-width: 510px) {
       .file-icon {
-        animation: upDownMobile 1.8s infinite alternate cubic-bezier(.7,.2,.36,1.1);
+        animation: upDownMobileOnly 1.8s infinite alternate cubic-bezier(.7,.2,.36,1.1);
+      }
+      .file-icon:hover {
+        /* No rotate, no skew, no left/right, just a simple scale on hover for feedback */
+        transform: scale(1.09) translateY(-10px) !important;
       }
     }
-    @keyframes upDownMobile {
+    @keyframes upDownMobileOnly {
       0% { transform: translateY(0);}
       100% { transform: translateY(-22px);}
     }
@@ -501,7 +507,7 @@
     }
   });
 
-  // الحل الإضافي لتفعيل زر الدفع تلقائياً بعد العودة للصفحة من الهاتف
+  // إعادة تفعيل زر الدفع عند العودة للصفحة من الهاتف
   document.addEventListener("visibilitychange", function() {
     if (!document.hidden) {
       const button = document.querySelector('.pay-button');
