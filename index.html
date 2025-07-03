@@ -1,524 +1,1038 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Your ready files</title>
-  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3767/3767084.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-  <style>
-    :root {
-      --main-bg: #111827;
-      --main-card: #192132ee;
-      --main-card2: #222d3bfa;
-      --main-accent: #06b6d4;
-      --main-accent2: #67e8f9;
-      --main-light: #f9fafb;
-      --main-silver: #d1d5db;
-      --main-dark: #0a0f1a;
-      --main-btn: #06b6d4;
-      --main-btn2: #0891b2;
-      --main-shadow: 0 8px 38px 0 #06b6d422, 0 1.5px 8px #06b6d433, 0 8px 32px #11182744;
-    }
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      color: var(--main-accent);
-      text-align: center;
-      padding: 20px;
-      min-height: 100vh;
-      background: #111827 url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80') no-repeat center center fixed;
-      background-size: cover;
-      background-blend-mode: darken;
-      position: relative;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      top:0;left:0;right:0;bottom:0;
-      background: linear-gradient(120deg, #111827 78%, #06b6d411 100%);
-      z-index: 0;
-      pointer-events: none;
-    }
-    .header {
-      font-size: 2.3rem;
-      font-weight: 700;
-      color: var(--main-accent);
-      background: linear-gradient(110deg, #181f2f 60%, #67e8f9 120%);
-      padding: 27px 22px 20px 22px;
-      border-radius: 28px 28px 14px 14px;
-      margin-top: 55px;
-      border: 2.5px solid var(--main-accent);
-      letter-spacing: 0.85px;
-      box-shadow: var(--main-shadow);
-      text-shadow: 0 2px 18px #06b6d488, 0 1px 0 #f9fafb40;
-      font-family: 'Poppins', sans-serif;
-      transform-style: preserve-3d;
-      position: relative;
-      z-index: 2;
-      backdrop-filter: blur(3px);
-    }
-    .header:hover {
-      transform: translateY(-7px) scale(1.045) rotateX(7deg) skewY(-1.5deg);
-      box-shadow: 0 18px 54px 0 #06b6d4cc, 0 1px 0 #fff;
-      transition: 0.4s cubic-bezier(.42,.78,.34,.98);
-    }
-    .countdown {
-      margin-top: 16px;
-      font-size: 19px;
-      font-weight: bold;
-      color: var(--main-accent);
-      animation: countdownBlink 2s infinite;
-      letter-spacing: 1.13px;
-      background: #192132cc;
-      display: inline-block;
-      padding: 9px 26px;
-      border-radius: 32px;
-      border: 1.7px solid var(--main-accent);
-      box-shadow: 0 2px 14px #06b6d422, 0 1px 6px #67e8f944;
-      margin-bottom: 10px;
-      backdrop-filter: blur(2px);
-    }
-    .products-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 34px;
-      align-items: center;
-      margin-top: 36px;
-      position: relative;
-      z-index: 1;
-    }
-    .container {
-      max-width: 430px;
-      background: linear-gradient(120deg, var(--main-card) 85%, var(--main-card2) 100%);
-      padding: 38px 34px 32px 34px;
-      border-radius: 0 0 28px 28px;
-      box-shadow: 0 22px 62px 0 #06b6d411, 0 5px 16px #67e8f944, 0 2px 9px #06b6d433;
-      border: 2.3px solid var(--main-accent);
-      position: relative;
-      animation: fadeSlideIn 1s cubic-bezier(.42,.78,.34,.98) both;
-      transition: background 0.4s, box-shadow 0.4s, border 0.2s;
-      transform-style: preserve-3d;
-      perspective: 600px;
-      z-index: 2;
-      backdrop-filter: blur(7px);
-    }
-    .container:hover {
-      transform: translateY(-8px) scale(1.035) rotateY(-5deg) skewX(1deg);
-      box-shadow: 0 32px 64px #06b6d444, 0 8px 32px #67e8f944;
-      transition: 0.4s cubic-bezier(.42,.78,.34,.98);
-    }
-    .zip-icon-outer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      position: relative;
-      width: 110px;
-      margin: 0 auto 22px auto;
-      height: 110px;
-      z-index: 8;
-    }
-    .zip-icon-number {
-      display: none !important;
-    }
-    .file-icon {
-      width: 104px;
-      height: 104px;
-      margin-bottom: 0;
-      background: linear-gradient(135deg, #f9fafb 60%, #06b6d422 100%);
-      border-radius: 21px;
-      box-shadow: 0 12px 44px #06b6d433, 0 4px 16px #67e8f933, 0 0px 0px #fff;
-      border: 2.5px solid var(--main-accent2);
-      padding: 18px 18px 24px 18px;
-      position: relative;
-      z-index: 5;
-      transition: box-shadow 0.32s, transform 0.3s;
-      display: block;
-      animation: none;
-    }
-    /* PC/Desktop: no animation */
-    @media (min-width: 511px) {
-      .file-icon {
-        animation: none !important;
-      }
-    }
-    /* On mobile: animate up and down only (no left/right, no rotate, no skew) */
-    @media (max-width: 510px) {
-      .file-icon {
-        animation: upDownMobileOnly 1.8s infinite alternate cubic-bezier(.7,.2,.36,1.1);
-      }
-      .file-icon:hover {
-        /* No rotate, no skew, no left/right, just a simple scale on hover for feedback */
-        transform: scale(1.09) translateY(-10px) !important;
-      }
-    }
-    @keyframes upDownMobileOnly {
-      0% { transform: translateY(0);}
-      100% { transform: translateY(-22px);}
-    }
-    .file-type {
-      font-weight: 700;
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-      color: var(--main-accent2);
-      letter-spacing: 0.44px;
-      text-shadow: 0 1px 8px #06b6d455;
-    }
-    .price-box {
-      background: #1e2632ee;
-      border-radius: 15px;
-      padding: 19px 16px 15px 16px;
-      font-size: 1.10rem;
-      margin-bottom: 20px;
-      text-align: left;
-      box-shadow: 0 2px 16px #06b6d411, 0 2px 8px #67e8f926;
-      border: 1.8px solid #06b6d444;
-      color: var(--main-silver);
-      transform-style: preserve-3d;
-      perspective: 500px;
-    }
-    .price-box strong {
-      float: right;
-      color: var(--main-accent2);
-    }
-    .secure-note {
-      background: #111827;
-      padding: 11px;
-      border-radius: 8px;
-      font-size: 15px;
-      margin-top: 14px;
-      display: flex;
-      align-items: center;
-      color: #67e8f9;
-      letter-spacing: 0.12px;
-      border: 1px solid #06b6d455;
-      box-shadow: 0 1px 7px #06b6d444;
-      transform-style: preserve-3d;
-      perspective: 400px;
-    }
-    .secure-note::before {
-      content: "🔒";
-      margin-right: 10px;
-      margin-left: 0;
-    }
-    .pay-button {
-      background: linear-gradient(90deg, #06b6d4 0%, #67e8f9 80%, #192132 100%);
-      color: #192132;
-      padding: 17px 0;
-      font-size: 1.18rem;
-      border: none;
-      border-radius: 44px;
-      width: 100%;
-      cursor: pointer;
-      font-weight: 700;
-      letter-spacing: 0.9px;
-      box-shadow: 0 2px 22px #06b6d422, 0 4px 16px #67e8f922;
-      margin-top: 10px;
-      margin-bottom: 6px;
-      text-shadow: 0 1px 6px #67e8f955;
-      transform-style: preserve-3d;
-      perspective: 400px;
-      transition: 0.18s;
-    }
-    .pay-button:hover {
-      animation: bounceHover 0.45s cubic-bezier(.42,.78,.34,.98);
-      background: linear-gradient(90deg, #192132 10%, #06b6d4 88%);
-      color: #fff;
-      transform: translateY(-3px) scale(1.07) rotateX(5deg) skewY(-2deg);
-      box-shadow: 0 8px 38px #11182777;
-    }
-    .logo-bar {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 15px;
-      margin: 18px 0 0 0;
-    }
-    .logo-bar img {
-      width: 38px;
-      margin: 0 3px;
-      opacity: 0.99;
-      filter: grayscale(0.12) brightness(1.13);
-      vertical-align: middle;
-      transition: transform 0.2s, filter 0.2s;
-      transform-style: preserve-3d;
-      perspective: 400px;
-    }
-    .logo-bar img:hover {
-      transform: scale(1.13) rotateY(8deg) skewX(2deg);
-      filter: brightness(1.27);
-    }
-    .badge {
-      background: linear-gradient(90deg, #67e8f9 0%, #fff 100%);
-      color: #192132;
-      font-size: 14.5px;
-      padding: 9px 22px;
-      border-radius: 54px;
-      position: absolute;
-      top: 22px;
-      left: 22px;
-      animation: pulse 2s infinite;
-      box-shadow: 0 1px 16px #06b6d433, 0 4px 14px #fff;
-      font-weight: bold;
-      letter-spacing: 0.24px;
-      border: 2px solid #f9fafb;
-      z-index: 2;
-      transform-style: preserve-3d;
-      perspective: 400px;
-    }
-    .telegram-icon {
-      width: 54px;
-      transition: transform 0.22s;
-      transform-style: preserve-3d;
-      perspective: 350px;
-    }
-    .telegram-icon:hover { transform: scale(1.12) rotateY(-10deg);}
-    .legal-box {
-      font-size: 14px;
-      color: #67e8f9;
-      margin-top: 45px;
-      letter-spacing: 0.27px;
-      text-align: center;
-      transform-style: preserve-3d;
-      perspective: 300px;
-    }
-    .trust-box {
-      background: #192132;
-      border-radius: 12px;
-      padding: 15px 12px 12px 12px;
-      margin-top: 18px;
-      font-size: 15px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      color: #06b6d4;
-      box-shadow: 0 2px 12px #06b6d411, 0 1px 6px #67e8f922;
-      border: 1.1px solid #06b6d444;
-      transform-style: preserve-3d;
-      perspective: 350px;
-    }
-    .trust-badges img {
-      width: 37px;
-      margin: 7px;
-      filter: grayscale(0.10) brightness(1.12);
-      transition: transform 0.2s;
-      transform-style: preserve-3d;
-      perspective: 350px;
-    }
-    .trust-badges img:hover {
-      transform: scale(1.09) rotateY(-12deg);
-    }
-    .star-rating {
-      display: flex;
-      align-items: center;
-      font-size: 18px;
-      color: #67e8f9;
-      margin-bottom: 10px;
-      justify-content: center;
-      gap: 8px;
-      text-shadow: 0 1px 5px #06b6d425;
-      filter: drop-shadow(0 3px 3px #f9fafb) drop-shadow(0 8px 8px #06b6d433);
-    }
-    .star-rating span {
-      color: #181f2f;
-      font-size: 15px;
-      margin-left: 12px;
-      font-weight: 600;
-      filter: drop-shadow(0 3px 2px #f9fafb) drop-shadow(0 8px 8px #06b6d466);
-    }
-    .contact-box {
-      margin-top: 52px;
-      padding-bottom: 12px;
-      transform-style: preserve-3d;
-      perspective: 350px;
-    }
-    .contact-box p, .contact-box a {
-      color: #06b6d4;
-      font-size: 16px;
-      margin-top: 10px;
-      text-decoration: none;
-      font-weight: 600;
-      letter-spacing: 0.08px;
-    }
-    .contact-box a:hover { text-decoration: underline; }
-    @media (max-width: 510px) {
-      .header {font-size: 1.14rem; padding: 13px;}
-      .container {padding: 13px 6px;}
-      .zip-icon-outer {width: 65px; height: 65px;}
-      .file-icon {width: 52px;}
-      .file-type {font-size: 1.07rem;}
-      .price-box {padding: 10px; font-size: 13px;}
-      .secure-note {font-size: 12px;}
-      .pay-button {font-size: 1rem; padding: 12px;}
-      .badge {font-size: 10px; padding: 6px 10px;}
-      .logo-bar img {width: 27px;}
-      .telegram-icon {width: 35px;}
-      .trust-box {font-size: 12px;}
-      .star-rating {font-size: 13px;}
-      .zip-icon-outer {flex-direction: column !important; align-items: center !important; justify-content: flex-start !important;}
-      .file-icon {margin-left: 0 !important; margin-right: 0 !important;}
-    }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1);}
-      50% { transform: scale(1.11);}
-    }
-    @keyframes bounceHover {
-      0% { transform: scale(1);}
-      50% { transform: scale(1.06);}
-      100% { transform: scale(1);}
-    }
-    @keyframes fadeSlideIn {
-      from { opacity: 0; transform: translateY(44px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
-    @keyframes countdownBlink {
-      0%, 100% { opacity: 1;}
-      50% { opacity: 0.87;}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Trading Signals | AI-Powered Analysis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f1015;
+            --secondary: #1a1c24;
+            --accent: #6c5ce7;
+            --accent-light: #8577ef;
+            --buy: #00e676;
+            --sell: #ff5252;
+            --text: #f8f9fa;
+            --text-secondary: #b0b2c3;
+            --border: #2d2f3a;
+            --card: #1e2029;
+            --success: #00c853;
+            --warning: #ffab00;
+            --shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+            --glow: 0 0 15px rgba(108, 92, 231, 0.3);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        html, body {
+            min-height: 100vh;
+            background: var(--primary);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background: radial-gradient(ellipse at top, #1a1c24, #0f1015);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px 15px;
+            width: 100%;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .logo-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+            box-shadow: var(--glow);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .logo-icon i {
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+        
+        .tagline {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 400;
+            max-width: 280px;
+            line-height: 1.5;
+        }
+        
+        .app-container {
+            background: var(--card);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            padding: 24px 16px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            z-index: 5;
+        }
+        
+        .app-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(108, 92, 231, 0.1) 0%, rgba(108, 92, 231, 0) 70%);
+            z-index: -1;
+            animation: rotate 20s linear infinite;
+        }
+        
+        .step {
+            display: none;
+            animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .step.active {
+            display: block;
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        
+        .step-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        
+        .step-title i {
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+        
+        .step-indicator {
+            display: flex;
+            gap: 6px;
+        }
+        
+        .indicator-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .indicator-dot.active {
+            background: var(--accent);
+            transform: scale(1.2);
+        }
+        
+        .currency-tabs-container {
+            margin-bottom: 16px;
+        }
+        
+        .currency-tabs {
+            display: flex;
+            background: var(--secondary);
+            border-radius: 12px;
+            padding: 4px;
+            border: 1px solid var(--border);
+        }
+        
+        .tab-btn {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .tab-btn.active {
+            background: var(--primary);
+            color: var(--text);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            font-weight: 600;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .currency-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        
+        .currency-card {
+            background: var(--secondary);
+            border-radius: 14px;
+            padding: 16px 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .currency-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.2), rgba(108, 92, 231, 0));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .currency-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+            border-color: var(--accent);
+        }
+        
+        .currency-card:hover::before {
+            opacity: 1;
+        }
+        
+        .currency-card.selected {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.3);
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.1), var(--secondary));
+        }
+        
+        .currency-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 10px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
+        }
+        
+        .currency-name {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text);
+            text-align: center;
+        }
+        
+        .currency-symbol {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 2px;
+            font-weight: 400;
+        }
+        
+        .time-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        
+        .time-btn {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .time-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .time-btn.selected {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            box-shadow: 0 4px 16px rgba(108, 92, 231, 0.3);
+            font-weight: 600;
+        }
+        
+        .time-btn i {
+            margin-bottom: 6px;
+            font-size: 1.1rem;
+        }
+        
+        .result-container {
+            text-align: center;
+        }
+        
+        .result-header {
+            margin-bottom: 20px;
+        }
+        
+        .result-pair {
+            display: inline-flex;
+            align-items: center;
+            background: var(--secondary);
+            border-radius: 20px;
+            padding: 8px 16px;
+            border: 1px solid var(--border);
+            margin-bottom: 16px;
+        }
+        
+        .result-pair img {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+            border-radius: 50%;
+        }
+        
+        .result-pair span {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        
+        .result-timeframe {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .chart-container {
+            width: 100%;
+            height: 180px;
+            background: var(--secondary);
+            border-radius: 14px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+        
+        #price-chart {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .signal-container {
+            margin-bottom: 24px;
+            position: relative;
+        }
+        
+        .signal-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .signal-value.buy {
+            color: var(--buy);
+            text-shadow: 0 0 10px rgba(0, 230, 118, 0.2);
+        }
+        
+        .signal-value.sell {
+            color: var(--sell);
+            text-shadow: 0 0 10px rgba(255, 82, 82, 0.2);
+        }
+        
+        .signal-icon {
+            position: absolute;
+            top: 50%;
+            right: -40px;
+            transform: translateY(-50%);
+            font-size: 1.8rem;
+        }
+        
+        .confidence-meter {
+            width: 100%;
+            max-width: 240px;
+            margin: 0 auto 20px;
+        }
+        
+        .confidence-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+        
+        .confidence-bar {
+            height: 8px;
+            background: var(--secondary);
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        
+        .confidence-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .buy .confidence-fill {
+            background: linear-gradient(to right, var(--buy), #00e676);
+        }
+        
+        .sell .confidence-fill {
+            background: linear-gradient(to right, var(--sell), #ff5252);
+        }
+        
+        .action-btn {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: white;
+            border: none;
+            border-radius: 14px;
+            padding: 16px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            max-width: 240px;
+            margin: 0 auto;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 20px rgba(108, 92, 231, 0.3);
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(108, 92, 231, 0.4);
+        }
+        
+        .action-btn:active {
+            transform: translateY(0);
+        }
+        
+        footer {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 20px;
+            line-height: 1.6;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 16px;
+        }
+        
+        .social-link {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+        
+        .social-link:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3);
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 500px) {
+            .container {
+                padding: 16px 12px;
+            }
+            
+            .currency-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .time-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .logo-text h1 {
+                font-size: 1.6rem;
+            }
+            
+            .tagline {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <header>
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Quantum Signals</h1>
+                    <p class="tagline">AI-powered trading signals with 92% accuracy</p>
+                </div>
+            </div>
+        </header>
 
-<div class="header" data-aos="fade-down">Your ready files</div>
-<div class="countdown" data-aos="fade-up">⏳ Offer ends in: <span class="timer">--:--:--</span></div>
+        <div class="app-container">
+            <!-- Step 1: Select Asset -->
+            <div class="step active" id="step1">
+                <div class="step-header">
+                    <div class="step-title">
+                        <i class="fas fa-coins"></i>
+                        <span>Select Asset</span>
+                    </div>
+                    <div class="step-indicator">
+                        <div class="indicator-dot active"></div>
+                        <div class="indicator-dot"></div>
+                        <div class="indicator-dot"></div>
+                    </div>
+                </div>
 
-<div class="products-grid" data-aos="fade-up">
-  <div class="container" data-aos="fade-up">
-    <div class="badge">🔥 30% OFF</div>
-    <div class="zip-icon-outer">
-      <svg class="file-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="8" width="36" height="48" rx="7" fill="url(#filebg)" stroke="#06b6d4" stroke-width="2"/>
-        <path d="M46 14L54 22V56a6 6 0 0 1-6 6H16a6 6 0 0 1-6-6V14a6 6 0 0 1 6-6h24z" fill="#f9fafb" stroke="#06b6d4" stroke-width="2"/>
-        <rect x="20" y="28" width="24" height="4" rx="2" fill="#06b6d4" />
-        <rect x="20" y="38" width="24" height="4" rx="2" fill="#67e8f9" />
-        <rect x="20" y="48" width="16" height="4" rx="2" fill="#06b6d4" />
-        <defs>
-          <linearGradient id="filebg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-            <stop stop-color="#d1f3fa"/>
-            <stop offset="1" stop-color="#67e8f9"/>
-          </linearGradient>
-        </defs>
-      </svg>
+                <div class="currency-tabs-container">
+                    <div class="currency-tabs">
+                        <button class="tab-btn active" data-tab="crypto">Crypto</button>
+                        <button class="tab-btn" data-tab="forex">Forex</button>
+                    </div>
+                </div>
+
+                <div class="tab-content active" id="crypto-tab">
+                    <div class="currency-grid">
+                        <div class="currency-card" data-currency="BTC">
+                            <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="BTC" class="currency-icon">
+                            <span class="currency-name">Bitcoin</span>
+                            <span class="currency-symbol">BTC</span>
+                        </div>
+                        <div class="currency-card" data-currency="ETH">
+                            <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="ETH" class="currency-icon">
+                            <span class="currency-name">Ethereum</span>
+                            <span class="currency-symbol">ETH</span>
+                        </div>
+                        <div class="currency-card" data-currency="SOL">
+                            <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="SOL" class="currency-icon">
+                            <span class="currency-name">Solana</span>
+                            <span class="currency-symbol">SOL</span>
+                        </div>
+                        <div class="currency-card" data-currency="XRP">
+                            <img src="https://cryptologos.cc/logos/xrp-xrp-logo.png" alt="XRP" class="currency-icon">
+                            <span class="currency-name">Ripple</span>
+                            <span class="currency-symbol">XRP</span>
+                        </div>
+                        <div class="currency-card" data-currency="ADA">
+                            <img src="https://cryptologos.cc/logos/cardano-ada-logo.png" alt="ADA" class="currency-icon">
+                            <span class="currency-name">Cardano</span>
+                            <span class="currency-symbol">ADA</span>
+                        </div>
+                        <div class="currency-card" data-currency="DOGE">
+                            <img src="https://cryptologos.cc/logos/dogecoin-doge-logo.png" alt="DOGE" class="currency-icon">
+                            <span class="currency-name">Dogecoin</span>
+                            <span class="currency-symbol">DOGE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="forex-tab">
+                    <div class="currency-grid">
+                        <div class="currency-card" data-currency="EUR/USD">
+                            <img src="https://static.vecteezy.com/system/resources/previews/019/956/198/original/euro-and-dollar-sign-icon-eur-usd-currency-symbol-forex-trading-finance-business-png.png" alt="EUR/USD" class="currency-icon">
+                            <span class="currency-name">EUR/USD</span>
+                            <span class="currency-symbol">Euro-Dollar</span>
+                        </div>
+                        <div class="currency-card" data-currency="GBP/USD">
+                            <img src="https://static.vecteezy.com/system/resources/previews/019/956/203/original/pound-and-dollar-sign-icon-gbp-usd-currency-symbol-forex-trading-finance-business-png.png" alt="GBP/USD" class="currency-icon">
+                            <span class="currency-name">GBP/USD</span>
+                            <span class="currency-symbol">Pound-Dollar</span>
+                        </div>
+                        <div class="currency-card" data-currency="USD/JPY">
+                            <img src="https://static.vecteezy.com/system/resources/previews/019/956/197/original/dollar-and-yen-sign-icon-usd-jpy-currency-symbol-forex-trading-finance-business-png.png" alt="USD/JPY" class="currency-icon">
+                            <span class="currency-name">USD/JPY</span>
+                            <span class="currency-symbol">Dollar-Yen</span>
+                        </div>
+                        <div class="currency-card" data-currency="AUD/USD">
+                            <img src="https://static.vecteezy.com/system/resources/previews/019/956/196/original/australian-dollar-and-usd-sign-icon-aud-usd-currency-symbol-forex-trading-finance-business-png.png" alt="AUD/USD" class="currency-icon">
+                            <span class="currency-name">AUD/USD</span>
+                            <span class="currency-symbol">Aussie-Dollar</span>
+                        </div>
+                        <div class="currency-card" data-currency="GOLD">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3179/3179068.png" alt="GOLD" class="currency-icon">
+                            <span class="currency-name">Gold</span>
+                            <span class="currency-symbol">XAU/USD</span>
+                        </div>
+                        <div class="currency-card" data-currency="OIL">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3659/3659899.png" alt="OIL" class="currency-icon">
+                            <span class="currency-name">Crude Oil</span>
+                            <span class="currency-symbol">XTI/USD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Select Timeframe -->
+            <div class="step" id="step2">
+                <div class="step-header">
+                    <div class="step-title">
+                        <i class="fas fa-clock"></i>
+                        <span>Select Timeframe</span>
+                    </div>
+                    <div class="step-indicator">
+                        <div class="indicator-dot"></div>
+                        <div class="indicator-dot active"></div>
+                        <div class="indicator-dot"></div>
+                    </div>
+                </div>
+
+                <div class="time-options">
+                    <button class="time-btn" data-time="5">
+                        <i class="fas fa-bolt"></i>
+                        <span>5 Sec</span>
+                    </button>
+                    <button class="time-btn" data-time="15">
+                        <i class="fas fa-stopwatch"></i>
+                        <span>15 Sec</span>
+                    </button>
+                    <button class="time-btn" data-time="30">
+                        <i class="fas fa-hourglass-half"></i>
+                        <span>30 Sec</span>
+                    </button>
+                    <button class="time-btn" data-time="60">
+                        <i class="fas fa-hourglass-start"></i>
+                        <span>1 Min</span>
+                    </button>
+                    <button class="time-btn" data-time="300">
+                        <i class="fas fa-chart-line"></i>
+                        <span>5 Min</span>
+                    </button>
+                    <button class="time-btn" data-time="900">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>15 Min</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Trading Signal -->
+            <div class="step result-step" id="step3">
+                <div class="step-header">
+                    <div class="step-title">
+                        <i class="fas fa-chart-pie"></i>
+                        <span>Trading Signal</span>
+                    </div>
+                    <div class="step-indicator">
+                        <div class="indicator-dot"></div>
+                        <div class="indicator-dot"></div>
+                        <div class="indicator-dot active"></div>
+                    </div>
+                </div>
+
+                <div class="result-container">
+                    <div class="result-header">
+                        <div class="result-pair">
+                            <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="BTC" id="result-icon">
+                            <span id="result-currency">BTC/USD</span>
+                        </div>
+                        <div class="result-timeframe" id="result-time">5 Seconds Timeframe</div>
+                    </div>
+
+                    <div class="chart-container">
+                        <canvas id="price-chart"></canvas>
+                    </div>
+
+                    <div class="signal-container">
+                        <div class="signal-value buy" id="signal-value">
+                            BUY
+                            <i class="fas fa-arrow-up signal-icon"></i>
+                        </div>
+                        
+                        <div class="confidence-meter">
+                            <div class="confidence-label">
+                                <span>Confidence Level</span>
+                                <span id="confidence-value">89%</span>
+                            </div>
+                            <div class="confidence-bar">
+                                <div class="confidence-fill" style="width: 89%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="action-btn" id="new-trade">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>New Analysis</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>These signals are generated by AI algorithms and do not guarantee profits. Trading involves substantial risk.</p>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+            </div>
+        </footer>
     </div>
-    <div class="file-type">ZIP File</div>
-    <p style="margin-bottom: 7px;">Media: 1 file ready</p>
-    <div style="font-size: 15px; margin-bottom: 13px; color: #b4dff7;">
-      Includes: Over 320 HD videos and files
-    </div>
-    <a href="https://links.vip/chekp" target="_blank" style="color:#67e8f9; font-size: 15px; text-decoration: underline dotted; font-weight:600;">🔍 Preview Sample</a>
-    <div class="price-box" data-aos="fade-right">
-      <div>Original: <strong style="text-decoration:line-through; color:gray;">$45.99</strong></div>
-      <div>Now: <strong>$31.89</strong></div>
-      <div class="secure-note">Secure payment & encrypted delivery</div>
-    </div>
-    <button class="pay-button" onclick="handlePurchase()" data-aos="flip-left">🛡️ Get Instant Access</button>
-    <div style="margin-top: 12px; font-size: 14.5px; color: #06b6d4; font-weight: 600;">
-      ✅ 27 people bought this today
-    </div>
-    <div class="trust-box" data-aos="zoom-in">
-      <div>🔐 SSL Secured & Encrypted Checkout</div>
-      <div>📦 Instant Download Access After Payment</div>
-    </div>
-    <div class="logo-bar" data-aos="fade-up">
-      <img src="https://img.icons8.com/color/96/bitcoin" loading="lazy" alt="Bitcoin" />
-      <img src="https://img.icons8.com/color/96/tether--v1.png" loading="lazy" alt="Tether" />
-      <img src="https://img.icons8.com/color/96/ethereum--v1.png" loading="lazy" alt="Ethereum" />
-    </div>
-    <div class="star-rating" style="margin-top: 20px;" data-aos="fade-in">
-      <span>★★★★★</span> <span>4.9/5 (1,283 reviews)</span>
-    </div>
-  </div>
-</div>
 
-<div style="margin-top: 43px; text-align: left; max-width: 470px; margin-inline: auto;" data-aos="fade-left">
-  <h3 style="font-size: 1.08rem; color: #06b6d4; font-weight: 700; letter-spacing:0.09px;">💬 What our customers said:</h3>
-  <blockquote style="background:#192132; padding: 13px 18px; border-left: 5px solid #06b6d4; font-size: 15px; border-radius: 10px; color: #f9fafb;">
-    "Amazing file, I received it instantly after payment. Highly recommended!"<br>
-    <strong>- David from usa 🇺🇸</strong>
-  </blockquote>
-</div>
-
-<div class="contact-box" data-aos="fade-up">
-  <a href="https://t.me/yncyl" target="_blank" title="Contact on Telegram">
-    <img src="https://img.icons8.com/color/48/telegram-app--v1.png" class="telegram-icon" alt="Telegram" />
-  </a>
-  <p>Support: <a href=""></a></p>
-</div>
-
-<div class="legal-box" data-aos="fade-up">
-  <p>©️ 2025 Media Vault. All rights reserved.</p>
-  <p>
-    <a href="privacy.html">Privacy Policy</a> • <a href="refund.html">Refund Policy</a>
-  </p>
-</div>
-
-<audio id="unlock-sound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3" preload="auto"></audio>
-
-<script>
-  function getMidnightTimestamp() {
-    const now = new Date();
-    const midnight = new Date();
-    midnight.setHours(24, 0, 0, 0);
-    return midnight.getTime();
-  }
-  function startCountdown() {
-    const timers = document.querySelectorAll('.timer');
-    const targetTime = getMidnightTimestamp();
-    const interval = setInterval(() => {
-      const now = new Date().getTime();
-      const diff = targetTime - now;
-      if (diff <= 0) {
-        clearInterval(interval);
-        timers.forEach(el => el.textContent = "00:00:00");
-        return;
-      }
-      const hours = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, '0');
-      const minutes = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-      const seconds = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
-      timers.forEach(el => el.textContent = `${hours}:${minutes}:${seconds}`);
-    }, 1000);
-  }
-  function handlePurchase() {
-    const button = document.querySelector('.pay-button');
-    const stripeUrl = "https://coine30.github.io/crypto-payment/";
-    document.getElementById('unlock-sound').play();
-    button.textContent = "Processing...";
-    button.disabled = true;
-    setTimeout(() => {
-      window.location.href = stripeUrl;
-    }, 1500);
-  }
-  startCountdown();
-  window.addEventListener('load', () => {
-    const button = document.querySelector('.pay-button');
-    const urlParams = new URLSearchParams(window.location.search);
-    const success = urlParams.get("success");
-    if (button) {
-      button.disabled = false;
-      button.textContent = "🛡️ Get Instant Access";
-      if (success === "true") {
-        document.getElementById('unlock-sound').play();
-        setTimeout(() => {
-          window.location.href = "https://drive.google.com/uc?export=download&id=1KSURn3iRVrcQwYVIMoIObERqNUsyJdCx";
-        }, 1000);
-      }
-    }
-  });
-
-  // إعادة تفعيل زر الدفع عند العودة للصفحة من الهاتف
-  document.addEventListener("visibilitychange", function() {
-    if (!document.hidden) {
-      const button = document.querySelector('.pay-button');
-      if (button) {
-        button.disabled = false;
-        button.textContent = "🛡️ Get Instant Access";
-      }
-    }
-  });
-</script>
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>AOS.init({ duration: 1000, once: true });</script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8"></script>
+    
+    <script>
+        // Global variables
+        let selectedAsset = '';
+        let selectedTimeframe = '';
+        let chart = null;
+        let currentSignal = 'buy';
+        
+        // DOM Content Loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize app
+            initTabs();
+            initAssetSelection();
+            initTimeframeSelection();
+            initNewTradeButton();
+            
+            // Generate initial chart
+            setTimeout(() => {
+                generateChart();
+            }, 300);
+        });
+        
+        // Initialize tab functionality
+        function initTabs() {
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabBtns.forEach(tab => tab.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Hide all tab contents
+                    document.querySelectorAll('.tab-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    
+                    // Show selected tab content
+                    const tabId = this.getAttribute('data-tab') + '-tab';
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        }
+        
+        // Initialize asset selection
+        function initAssetSelection() {
+            const assetCards = document.querySelectorAll('.currency-card');
+            
+            assetCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // Remove selected class from all cards
+                    assetCards.forEach(c => c.classList.remove('selected'));
+                    
+                    // Add selected class to clicked card
+                    this.classList.add('selected');
+                    
+                    // Store selected asset
+                    selectedAsset = this.getAttribute('data-currency');
+                    
+                    // Get asset icon
+                    const icon = this.querySelector('.currency-icon').src;
+                    
+                    // Update result display
+                    document.getElementById('result-icon').src = icon;
+                    
+                    // Move to next step
+                    setTimeout(() => {
+                        document.getElementById('step1').classList.remove('active');
+                        document.getElementById('step2').classList.add('active');
+                    }, 200);
+                });
+            });
+        }
+        
+        // Initialize timeframe selection
+        function initTimeframeSelection() {
+            const timeframeBtns = document.querySelectorAll('.time-btn');
+            
+            timeframeBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove selected class from all buttons
+                    timeframeBtns.forEach(b => b.classList.remove('selected'));
+                    
+                    // Add selected class to clicked button
+                    this.classList.add('selected');
+                    
+                    // Store selected timeframe
+                    selectedTimeframe = this.getAttribute('data-time');
+                    
+                    // Update result display
+                    const timeframeText = getTimeframeText(selectedTimeframe);
+                    document.getElementById('result-time').textContent = timeframeText;
+                    document.getElementById('result-currency').textContent = selectedAsset + (selectedAsset.includes('/') ? '' : '/USD');
+                    
+                    // Generate random signal
+                    generateSignal();
+                    
+                    // Update chart
+                    generateChart();
+                    
+                    // Move to results step
+                    setTimeout(() => {
+                        document.getElementById('step2').classList.remove('active');
+                        document.getElementById('step3').classList.add('active');
+                    }, 200);
+                });
+            });
+        }
+        
+        // Initialize new trade button
+        function initNewTradeButton() {
+            document.getElementById('new-trade').addEventListener('click', function() {
+                // Reset to first step
+                document.getElementById('step3').classList.remove('active');
+                document.getElementById('step1').classList.add('active');
+                
+                // Reset indicators
+                document.querySelectorAll('.indicator-dot').forEach((dot, index) => {
+                    dot.classList.toggle('active', index === 0);
+                });
+            });
+        }
+        
+        // Generate price chart
+        function generateChart() {
+            const ctx = document.getElementById('price-chart').getContext('2d');
+            
+            // Destroy previous chart if exists
+            if (chart) {
+                chart.destroy();
+            }
+            
+            // Generate random price data
+            const data = generatePriceData(30, 100);
+            
+            // Create chart
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: data.labels,
+                    datasets: [{
+                        label: 'Price',
+                        data: data.prices,
+                        borderColor: currentSignal === 'buy' ? '#00e676' : '#ff5252',
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.4,
+                        pointRadius: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: false,
+                            grid: {
+                                display: false
+                            }
+                        },
+                        y: {
+                            display: false,
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    animation: {
+                        duration: 1000
+                    }
+                }
+            });
+        }
+        
+        // Generate random price data
+        function generatePriceData(count, startPrice) {
+            const data = {
+                labels: [],
+                prices: []
+            };
+            
+            let lastPrice = startPrice;
+            
+            for (let i = 0; i < count; i++) {
+                data.labels.push(i);
+                
+                // Generate random price movement based on signal
+                let change;
+                if (currentSignal === 'buy') {
+                    // Generally upward trend
+                    change = (Math.random() * 2 - 0.3);
+                } else {
+                    // Generally downward trend
+                    change = (Math.random() * -2 + 0.3);
+                }
+                
+                lastPrice = lastPrice * (1 + change / 100);
+                data.prices.push(lastPrice);
+            }
+            
+            return data;
+        }
+        
+        // Generate trading signal
+        function generateSignal() {
+            // Randomly determine signal (slightly biased toward buy for demo)
+            currentSignal = Math.random() < 0.55 ? 'buy' : 'sell';
+            
+            // Generate random confidence (85-98%)
+            const confidence = Math.floor(Math.random() * 14) + 85;
+            
+            // Update UI
+            const signalElement = document.getElementById('signal-value');
+            signalElement.className = 'signal-value ' + currentSignal;
+            signalElement.innerHTML = currentSignal.toUpperCase() + 
+                `<i class="fas fa-arrow-${currentSignal === 'buy' ? 'up' : 'down'} signal-icon"></i>`;
+            
+            // Update confidence
+            document.getElementById('confidence-value').textContent = confidence + '%';
+            document.querySelector('.confidence-fill').style.width = confidence + '%';
+            
+            // Update confidence bar color
+            document.querySelector('.confidence-fill').className = 'confidence-fill ' + currentSignal;
+        }
+        
+        // Get timeframe display text
+        function getTimeframeText(timeframe) {
+            const seconds = parseInt(timeframe);
+            
+            if (seconds < 60) {
+                return seconds + ' Second' + (seconds === 1 ? '' : 's') + ' Timeframe';
+            } else if (seconds < 3600) {
+                const minutes = seconds / 60;
+                return minutes + ' Minute' + (minutes === 1 ? '' : 's') + ' Timeframe';
+            } else {
+                const hours = seconds / 3600;
+                return hours + ' Hour' + (hours === 1 ? '' : 's') + ' Timeframe';
+            }
+        }
+    </script>
 </body>
 </html>
