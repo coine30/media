@@ -6,6 +6,7 @@
     <title>Quantum Trading Signals | AI-Powered Analysis</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         :root {
             --primary: #0f1015;
@@ -20,8 +21,10 @@
             --card: #1e2029;
             --success: #00c853;
             --warning: #ffab00;
+            --error: #ff5252;
             --shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
             --glow: 0 0 15px rgba(108, 92, 231, 0.3);
+            --gradient: linear-gradient(135deg, var(--accent), var(--accent-light));
         }
         
         * {
@@ -54,9 +57,10 @@
         
         header {
             text-align: center;
-            margin-bottom: 24px;
+            margin-bottom: 30px;
             position: relative;
             z-index: 10;
+            padding: 20px 0;
         }
         
         .logo-container {
@@ -65,23 +69,24 @@
             align-items: center;
             margin-bottom: 8px;
             position: relative;
+            z-index: 2;
         }
         
         .logo-icon {
-            width: 56px;
-            height: 56px;
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
-            border-radius: 18px;
+            width: 64px;
+            height: 64px;
+            background: var(--gradient);
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 12px;
-            box-shadow: var(--glow);
+            margin-bottom: 16px;
+            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.4);
             animation: float 6s ease-in-out infinite;
         }
         
         .logo-icon i {
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: white;
         }
         
@@ -133,6 +138,60 @@
             animation: rotate 20s linear infinite;
         }
         
+        /* Access Denied Message */
+        .access-denied {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .access-denied-icon {
+            font-size: 3rem;
+            color: var(--error);
+            margin-bottom: 20px;
+        }
+        
+        .access-denied h2 {
+            color: var(--text);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .access-denied p {
+            color: var(--text-secondary);
+            max-width: 300px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .try-again-btn {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .try-again-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3);
+        }
+        
+        /* Step Styles */
         .step {
             display: none;
             animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -235,22 +294,26 @@
             flex-direction: column;
             align-items: center;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: 1px solid var(--border);
             position: relative;
             overflow: hidden;
         }
         
-        .currency-card::before {
+        .currency-card::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(108, 92, 231, 0.2), rgba(108, 92, 231, 0));
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.1), transparent);
             opacity: 0;
             transition: opacity 0.3s ease;
+        }
+        
+        .currency-card:hover::after {
+            opacity: 1;
         }
         
         .currency-card:hover {
@@ -259,14 +322,11 @@
             border-color: var(--accent);
         }
         
-        .currency-card:hover::before {
-            opacity: 1;
-        }
-        
         .currency-card.selected {
             border-color: var(--accent);
-            box-shadow: 0 0 0 2px rgba(108, 92, 231, 0.3);
+            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
             background: linear-gradient(135deg, rgba(108, 92, 231, 0.1), var(--secondary));
+            transform: translateY(-5px);
         }
         
         .currency-icon {
@@ -323,7 +383,7 @@
         }
         
         .time-btn.selected {
-            background: var(--accent);
+            background: var(--gradient);
             color: white;
             border-color: var(--accent);
             box-shadow: 0 4px 16px rgba(108, 92, 231, 0.3);
@@ -372,13 +432,14 @@
         
         .chart-container {
             width: 100%;
-            height: 180px;
-            background: var(--secondary);
-            border-radius: 14px;
+            height: 220px;
+            background: linear-gradient(145deg, #1e2029, #1a1c24);
+            border-radius: 16px;
             margin-bottom: 20px;
             overflow: hidden;
             border: 1px solid var(--border);
             position: relative;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
         }
         
         #price-chart {
@@ -392,21 +453,23 @@
         }
         
         .signal-value {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 8px;
             position: relative;
             display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .signal-value.buy {
             color: var(--buy);
-            text-shadow: 0 0 10px rgba(0, 230, 118, 0.2);
+            text-shadow: 0 0 15px rgba(0, 230, 118, 0.3);
         }
         
         .signal-value.sell {
             color: var(--sell);
-            text-shadow: 0 0 10px rgba(255, 82, 82, 0.2);
+            text-shadow: 0 0 15px rgba(255, 82, 82, 0.3);
         }
         
         .signal-icon {
@@ -454,7 +517,7 @@
         }
         
         .action-btn {
-            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            background: var(--gradient);
             color: white;
             border: none;
             border-radius: 14px;
@@ -471,6 +534,20 @@
             margin: 0 auto;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             box-shadow: 0 4px 20px rgba(108, 92, 231, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .action-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(30deg);
+            transition: all 0.3s ease;
         }
         
         .action-btn:hover {
@@ -478,8 +555,22 @@
             box-shadow: 0 8px 24px rgba(108, 92, 231, 0.4);
         }
         
+        .action-btn:hover::after {
+            left: 100%;
+        }
+        
         .action-btn:active {
             transform: translateY(0);
+        }
+        
+        .loading-spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
         }
         
         footer {
@@ -488,6 +579,7 @@
             font-size: 0.85rem;
             margin-top: 20px;
             line-height: 1.6;
+            padding: 0 15px;
         }
         
         .social-links {
@@ -498,8 +590,8 @@
         }
         
         .social-link {
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: var(--secondary);
             display: flex;
@@ -512,7 +604,7 @@
         }
         
         .social-link:hover {
-            background: var(--accent);
+            background: var(--gradient);
             color: white;
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3);
@@ -541,6 +633,10 @@
             100% { transform: scale(1); }
         }
         
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
         /* Responsive */
         @media (max-width: 500px) {
             .container {
@@ -562,11 +658,26 @@
             .tagline {
                 font-size: 0.95rem;
             }
+            
+            .signal-value {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <!-- Access Denied Container (Initially shown) -->
+    <div class="access-denied" id="access-denied" style="display: none;">
+        <div class="access-denied-icon">
+            <i class="fas fa-lock"></i>
+        </div>
+        <h2>Access Restricted</h2>
+        <p>Please enter the correct access code to view the trading signals</p>
+        <button class="try-again-btn" id="try-again-btn">Try Again</button>
+    </div>
+
+    <!-- Main App Container (Initially hidden) -->
+    <div class="container" id="main-container" style="display: none;">
         <header>
             <div class="logo-container">
                 <div class="logo-icon">
@@ -604,32 +715,32 @@
                 <div class="tab-content active" id="crypto-tab">
                     <div class="currency-grid">
                         <div class="currency-card" data-currency="BTC">
-                            <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="BTC" class="currency-icon" onerror="this.onerror=null;this.src='https://cryptologos.cc/logos/thumbs/bitcoin.png'">
+                            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="BTC" class="currency-icon">
                             <span class="currency-name">Bitcoin</span>
                             <span class="currency-symbol">BTC</span>
                         </div>
                         <div class="currency-card" data-currency="ETH">
-                            <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="ETH" class="currency-icon" onerror="this.onerror=null;this.src='https://cryptologos.cc/logos/thumbs/ethereum.png'">
+                            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png" alt="ETH" class="currency-icon">
                             <span class="currency-name">Ethereum</span>
                             <span class="currency-symbol">ETH</span>
                         </div>
                         <div class="currency-card" data-currency="SOL">
-                            <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="SOL" class="currency-icon" onerror="this.onerror=null;this.src='https://cryptologos.cc/logos/thumbs/solana.png'">
+                            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png" alt="SOL" class="currency-icon">
                             <span class="currency-name">Solana</span>
                             <span class="currency-symbol">SOL</span>
                         </div>
                         <div class="currency-card" data-currency="XRP">
-                            <img src="https://cryptologos.cc/logos/xrp-xrp-logo.png" alt="XRP" class="currency-icon" onerror="this.onerror=null;this.src='https://cryptologos.cc/logos/thumbs/xrp.png'">
+                            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/52.png" alt="XRP" class="currency-icon">
                             <span class="currency-name">Ripple</span>
                             <span class="currency-symbol">XRP</span>
                         </div>
                         <div class="currency-card" data-currency="ADA">
-                            <img src="https://cryptologos.cc/logos/cardano-ada-logo.png" alt="ADA" class="currency-icon" onerror="this.onerror=null;this.src='https://cryptologos.cc/logos/thumbs/cardano.png'">
+                            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/2010.png" alt="ADA" class="currency-icon">
                             <span class="currency-name">Cardano</span>
                             <span class="currency-symbol">ADA</span>
                         </div>
                         <div class="currency-card" data-currency="DOGE">
-                            <img src="https://cryptologos.cc/logos/dogecoin-doge-logo.png" alt="DOGE" class="currency-icon" onerror="this.onerror=null;this.src='https://cryptologos.cc/logos/thumbs/dogecoin.png'">
+                            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/74.png" alt="DOGE" class="currency-icon">
                             <span class="currency-name">Dogecoin</span>
                             <span class="currency-symbol">DOGE</span>
                         </div>
@@ -639,32 +750,32 @@
                 <div class="tab-content" id="forex-tab">
                     <div class="currency-grid">
                         <div class="currency-card" data-currency="EUR/USD">
-                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1ea-1f1fa.svg" alt="EUR" class="currency-icon">
+                            <img src="https://flagcdn.com/48x36/eu.png" alt="EUR" class="currency-icon">
                             <span class="currency-name">EUR/USD</span>
                             <span class="currency-symbol">Euro-Dollar</span>
                         </div>
                         <div class="currency-card" data-currency="GBP/USD">
-                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1ec-1f1e7.svg" alt="GBP" class="currency-icon">
+                            <img src="https://flagcdn.com/48x36/gb.png" alt="GBP" class="currency-icon">
                             <span class="currency-name">GBP/USD</span>
                             <span class="currency-symbol">Pound-Dollar</span>
                         </div>
                         <div class="currency-card" data-currency="USD/JPY">
-                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1fa-1f1f8.svg" alt="USD" class="currency-icon">
+                            <img src="https://flagcdn.com/48x36/us.png" alt="USD" class="currency-icon">
                             <span class="currency-name">USD/JPY</span>
                             <span class="currency-symbol">Dollar-Yen</span>
                         </div>
                         <div class="currency-card" data-currency="AUD/USD">
-                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f1e6-1f1fa.svg" alt="AUD" class="currency-icon">
+                            <img src="https://flagcdn.com/48x36/au.png" alt="AUD" class="currency-icon">
                             <span class="currency-name">AUD/USD</span>
                             <span class="currency-symbol">Aussie-Dollar</span>
                         </div>
                         <div class="currency-card" data-currency="GOLD">
-                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f947.svg" alt="GOLD" class="currency-icon">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2583/2583344.png" alt="GOLD" class="currency-icon">
                             <span class="currency-name">Gold</span>
                             <span class="currency-symbol">XAU/USD</span>
                         </div>
                         <div class="currency-card" data-currency="OIL">
-                            <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f6e2.svg" alt="OIL" class="currency-icon">
+                            <img src="https://cdn-icons-png.flaticon.com/512/3174/3174805.png" alt="OIL" class="currency-icon">
                             <span class="currency-name">Crude Oil</span>
                             <span class="currency-symbol">XTI/USD</span>
                         </div>
@@ -731,7 +842,7 @@
                 <div class="result-container">
                     <div class="result-header">
                         <div class="result-pair">
-                            <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="BTC" id="result-icon" onerror="this.onerror=null;this.src='https://cryptologos.cc/logos/thumbs/bitcoin.png'">
+                            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="BTC" id="result-icon">
                             <span id="result-currency">BTC/USD</span>
                         </div>
                         <div class="result-timeframe" id="result-time">5 Seconds Timeframe</div>
@@ -759,8 +870,8 @@
                     </div>
 
                     <button class="action-btn" id="new-trade">
-                        <i class="fas fa-sync-alt"></i>
-                        <span>New Analysis</span>
+                        <div class="loading-spinner" id="loading-spinner"></div>
+                        <span id="btn-text">New Analysis</span>
                     </button>
                 </div>
             </div>
@@ -787,10 +898,37 @@
         let selectedTimeframe = '';
         let chart = null;
         let currentSignal = 'buy';
+        let isLoading = false;
+        const ACCESS_CODE = '46338'; // The access code
         
-        // DOM Content Loaded
+        // Check access code on page load
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize app
+            checkAccess();
+            
+            // Set up try again button
+            document.getElementById('try-again-btn').addEventListener('click', checkAccess);
+        });
+        
+        // Check access code
+        function checkAccess() {
+            const enteredCode = prompt('Please enter the access code to view Quantum Trading Signals:');
+            
+            if (enteredCode === ACCESS_CODE) {
+                // Show main app
+                document.getElementById('main-container').style.display = 'block';
+                document.getElementById('access-denied').style.display = 'none';
+                
+                // Initialize the app
+                initApp();
+            } else {
+                // Show access denied
+                document.getElementById('access-denied').style.display = 'flex';
+                document.getElementById('main-container').style.display = 'none';
+            }
+        }
+        
+        // Initialize the trading app
+        function initApp() {
             initTabs();
             initAssetSelection();
             initTimeframeSelection();
@@ -800,7 +938,7 @@
             setTimeout(() => {
                 generateChart();
             }, 300);
-        });
+        }
         
         // Initialize tab functionality
         function initTabs() {
@@ -851,6 +989,11 @@
                     setTimeout(() => {
                         document.getElementById('step1').classList.remove('active');
                         document.getElementById('step2').classList.add('active');
+                        
+                        // Update indicators
+                        document.querySelectorAll('.indicator-dot').forEach((dot, index) => {
+                            dot.classList.toggle('active', index === 1);
+                        });
                     }, 200);
                 });
             });
@@ -862,6 +1005,8 @@
             
             timeframeBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
+                    if (isLoading) return;
+                    
                     // Remove selected class from all buttons
                     timeframeBtns.forEach(b => b.classList.remove('selected'));
                     
@@ -876,17 +1021,33 @@
                     document.getElementById('result-time').textContent = timeframeText;
                     document.getElementById('result-currency').textContent = selectedAsset + (selectedAsset.includes('/') ? '' : '/USD');
                     
-                    // Generate random signal
-                    generateSignal();
+                    // Show loading state
+                    isLoading = true;
+                    document.getElementById('loading-spinner').style.display = 'block';
+                    document.getElementById('btn-text').textContent = 'Analyzing...';
                     
-                    // Update chart
-                    generateChart();
-                    
-                    // Move to results step
+                    // Simulate analysis delay
                     setTimeout(() => {
+                        // Generate random signal
+                        generateSignal();
+                        
+                        // Update chart
+                        generateChart();
+                        
+                        // Hide loading state
+                        isLoading = false;
+                        document.getElementById('loading-spinner').style.display = 'none';
+                        document.getElementById('btn-text').textContent = 'New Analysis';
+                        
+                        // Move to results step
                         document.getElementById('step2').classList.remove('active');
                         document.getElementById('step3').classList.add('active');
-                    }, 200);
+                        
+                        // Update indicators
+                        document.querySelectorAll('.indicator-dot').forEach((dot, index) => {
+                            dot.classList.toggle('active', index === 2);
+                        });
+                    }, 1500);
                 });
             });
         }
@@ -894,6 +1055,8 @@
         // Initialize new trade button
         function initNewTradeButton() {
             document.getElementById('new-trade').addEventListener('click', function() {
+                if (isLoading) return;
+                
                 // Reset to first step
                 document.getElementById('step3').classList.remove('active');
                 document.getElementById('step1').classList.add('active');
@@ -901,6 +1064,15 @@
                 // Reset indicators
                 document.querySelectorAll('.indicator-dot').forEach((dot, index) => {
                     dot.classList.toggle('active', index === 0);
+                });
+                
+                // Reset selections
+                document.querySelectorAll('.currency-card').forEach(card => {
+                    card.classList.remove('selected');
+                });
+                
+                document.querySelectorAll('.time-btn').forEach(btn => {
+                    btn.classList.remove('selected');
                 });
             });
         }
@@ -941,6 +1113,21 @@
                         },
                         tooltip: {
                             enabled: false
+                        },
+                        zoom: {
+                            pan: {
+                                enabled: true,
+                                mode: 'x'
+                            },
+                            zoom: {
+                                wheel: {
+                                    enabled: true
+                                },
+                                pinch: {
+                                    enabled: true
+                                },
+                                mode: 'x'
+                            }
                         }
                     },
                     scales: {
