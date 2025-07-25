@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ملفات الوسائط المميزة</title>
-  <meta name="description" content="احصل على ملفات الوسائط المميزة بصيغة ZIP مع دفع آمن، توصيل فوري، وعروض خاصة. أحجام متعددة وحزم مونتاج متوفرة.">
-  <meta property="og:title" content="ملفات الوسائط المميزة - تحميل فوري ودفع آمن">
-  <meta property="og:description" content="وصول إلى مقاطع فيديو عالية الدقة، ملفات صوتية، قوالب وحزم مونتاج. آمن، سريع وموثوق.">
+  <title>Premium Media Files</title>
+  <meta name="description" content="Get premium media files in ZIP format with secure payment, instant delivery, and special offers. Multiple sizes and editing packs available.">
+  <meta property="og:title" content="Premium Media Files - Instant Download & Secure Payment">
+  <meta property="og:description" content="Access high-quality videos, audio files, templates and editing packs. Secure, fast and reliable.">
   <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/3767/3767084.png">
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3767/3767084.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <style>
     :root {
@@ -23,21 +23,20 @@
     
     body {
       margin: 0;
-      font-family: 'Tajawal', sans-serif;
+      font-family: 'Inter', sans-serif;
       background: linear-gradient(135deg, #f5e6ff 0%, #d2b4de 100%);
       color: var(--text-color);
       text-align: center;
       padding: 15px;
       min-height: 100vh;
       transition: background 0.4s;
-      direction: rtl;
     }
     
     .header {
       font-size: 1.8rem;
       font-weight: 700;
       color: #fff;
-      background: linear-gradient(to left, var(--primary-color), var(--dark-purple));
+      background: linear-gradient(to right, var(--primary-color), var(--dark-purple));
       padding: 18px;
       border-radius: 16px;
       margin-top: 40px;
@@ -85,7 +84,7 @@
       right: 0;
       width: 100%;
       height: 5px;
-      background: linear-gradient(to left, var(--primary-color), var(--secondary-color));
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
     }
     
     .card-title {
@@ -166,7 +165,7 @@
     .close {
       position: absolute;
       top: 15px;
-      left: 15px;
+      right: 15px;
       font-size: 24px;
       color: var(--primary-color);
       cursor: pointer;
@@ -180,7 +179,7 @@
       border-radius: 20px;
       position: absolute;
       top: 15px;
-      right: 15px;
+      left: 15px;
       font-weight: bold;
     }
     
@@ -189,7 +188,7 @@
       border-radius: 12px;
       padding: 15px;
       margin: 15px 0;
-      text-align: right;
+      text-align: center;
     }
     
     .price-box div {
@@ -210,7 +209,7 @@
     }
     
     .pay-button {
-      background: linear-gradient(to left, var(--primary-color), var(--secondary-color));
+      background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
       color: white;
       border: none;
       padding: 12px;
@@ -224,7 +223,7 @@
     }
     
     .pay-button:hover {
-      background: linear-gradient(to left, var(--dark-purple), var(--primary-color));
+      background: linear-gradient(to right, var(--dark-purple), var(--primary-color));
       transform: translateY(-2px);
     }
     
@@ -234,13 +233,14 @@
       padding: 12px;
       margin: 15px 0;
       font-size: 13px;
-      text-align: right;
+      text-align: center;
     }
     
     .trust-box div {
       margin: 5px 0;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
     }
     
@@ -289,9 +289,9 @@
       border-radius: 12px;
       padding: 15px;
       margin: 15px 0;
-      text-align: right;
+      text-align: center;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-      border-right: 4px solid var(--primary-color);
+      border-left: 4px solid var(--primary-color);
     }
     
     .testimonial strong {
@@ -367,16 +367,16 @@
 <!-- WhatsApp floating button -->
 <div class="whatsapp-float">
   <a href="https://wa.me/XXXXXXXXXXX" target="_blank">
-    <img src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="واتساب">
+    <img src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="WhatsApp">
   </a>
 </div>
 
 <!-- Header -->
 <div class="header" data-aos="fade-down">
-  🗂️ ملفاتك الجاهزة - اختر النسخة المناسبة
+  🗂️ Your Files Are Ready - Choose Your Package
 </div>
 <div class="countdown" data-aos="fade-up">
-  ⏳ ينتهي العرض خلال: <span class="timer">--:--:--</span>
+  ⏳ Offer ends in: <span class="timer">--:--:--</span>
 </div>
 
 <!-- Products Grid -->
@@ -385,60 +385,60 @@
   <div class="product-card" onclick="openProductModal('modal1')" data-aos="zoom-in">
     <div class="card-title">
       <img src="https://img.icons8.com/color/48/zip--v1.png" width="24" alt="ZIP">
-      2 جيجا بايت
+      2 GB Package
     </div>
-    <div class="product-offre">عرض اليوم: <span>30% خصم</span></div>
+    <div class="product-offre">Today's Offer: <span>30% OFF</span></div>
     <img src="https://cdn-icons-png.flaticon.com/512/3767/3767084.png" class="zip-icon" alt="ZIP">
     <div class="file-type">
       <img src="https://img.icons8.com/color/48/video-file.png" width="24" alt="Video">
-      ملف مضغوط (2 جيجا)
+      Compressed File (2GB)
     </div>
-    <div class="card-footer">انقر لمزيد من التفاصيل</div>
+    <div class="card-footer">Click for details</div>
   </div>
   
   <!-- Product 2 -->
   <div class="product-card" onclick="openProductModal('modal2')" data-aos="zoom-in" data-aos-delay="100">
     <div class="card-title">
       <img src="https://img.icons8.com/color/48/zip--v1.png" width="24" alt="ZIP">
-      10 جيجا بايت
+      10 GB Package
     </div>
-    <div class="product-offre">عرض اليوم: <span>40% خصم</span></div>
+    <div class="product-offre">Today's Offer: <span>40% OFF</span></div>
     <img src="https://cdn-icons-png.flaticon.com/512/3767/3767084.png" class="zip-icon" alt="ZIP">
     <div class="file-type">
       <img src="https://img.icons8.com/color/48/video-file.png" width="24" alt="Video">
-      ملف مضغوط (10 جيجا)
+      Compressed File (10GB)
     </div>
-    <div class="card-footer">انقر لمزيد من التفاصيل</div>
+    <div class="card-footer">Click for details</div>
   </div>
   
   <!-- Product 3 -->
   <div class="product-card" onclick="openProductModal('modal3')" data-aos="zoom-in" data-aos-delay="200">
     <div class="card-title">
       <img src="https://img.icons8.com/color/48/zip--v1.png" width="24" alt="ZIP">
-      15 جيجا بايت
+      15 GB Package
     </div>
-    <div class="product-offre">عرض اليوم: <span>45% خصم</span></div>
+    <div class="product-offre">Today's Offer: <span>45% OFF</span></div>
     <img src="https://cdn-icons-png.flaticon.com/512/3767/3767084.png" class="zip-icon" alt="ZIP">
     <div class="file-type">
       <img src="https://img.icons8.com/color/48/video-file.png" width="24" alt="Video">
-      ملف مضغوط (15 جيجا)
+      Compressed File (15GB)
     </div>
-    <div class="card-footer">انقر لمزيد من التفاصيل</div>
+    <div class="card-footer">Click for details</div>
   </div>
   
   <!-- Product 4 -->
   <div class="product-card" onclick="openProductModal('modal4')" data-aos="zoom-in" data-aos-delay="300">
     <div class="card-title">
       <img src="https://img.icons8.com/color/48/folder-invoices--v1.png" width="24" alt="Folder">
-      حزمة المونتاج
+      Editing Pack
     </div>
-    <div class="product-offre">عرض اليوم: <span>50% خصم</span></div>
+    <div class="product-offre">Today's Offer: <span>50% OFF</span></div>
     <img src="https://cdn-icons-png.flaticon.com/512/3767/3767084.png" class="zip-icon" alt="ZIP">
     <div class="file-type">
       <img src="https://img.icons8.com/color/48/folder-invoices--v1.png" width="24" alt="Folder">
-      حزمة مونتاج (خاصة)
+      Premium Editing Pack
     </div>
-    <div class="card-footer">انقر لمزيد من التفاصيل</div>
+    <div class="card-footer">Click for details</div>
   </div>
 </div>
 
@@ -447,29 +447,29 @@
 <div id="modal1" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeProductModal('modal1')">&times;</span>
-    <div class="badge">🔥 30% خصم</div>
+    <div class="badge">🔥 30% OFF</div>
     <img src="https://cdn-icons-png.flaticon.com/512/3767/3767084.png" class="zip-icon" alt="ZIP">
     <div class="file-type">
       <img src="https://img.icons8.com/color/48/video-file.png" width="24" alt="Video">
-      ملف مضغوط (2 جيجا)
+      Compressed File (2GB)
     </div>
-    <p>المحتوى: ملف واحد جاهز</p>
-    <p style="font-size:14px; color:#666;">يشمل: 150+ فيديو عالي الدقة، ملفات صوتية وقوالب</p>
+    <p>Content: 1 ready-to-use file</p>
+    <p style="font-size:14px; color:#666;">Includes: 150+ HD videos, audio files and templates</p>
     
     <div class="price-box">
-      <div>السعر الأصلي: <strong style="text-decoration:line-through; color:#999;">$45.99</strong></div>
-      <div>السعر بعد الخصم: <strong style="color:var(--accent-color);">$31.89</strong></div>
-      <div class="secure-note">🔒 دفع آمن وتوصيل مشفر</div>
+      <div>Original Price: <strong style="text-decoration:line-through; color:#999;">$45.99</strong></div>
+      <div>Discounted Price: <strong style="color:var(--accent-color);">$31.89</strong></div>
+      <div class="secure-note">🔒 Secure payment & encrypted delivery</div>
     </div>
     
     <button class="pay-button" onclick="handlePurchase(this, 'https://buy.stripe.com/test_dRm8wRboI9gf8he0jXg7e00')">
-      🛡️ احصل على الوصول الفوري
+      🛡️ Get Instant Access
     </button>
     
     <div class="trust-box">
-      <div>✅ ضمان استرداد الأموال لمدة 7 أيام</div>
-      <div>🔐 عملية دفع آمنة</div>
-      <div>📦 تحميل فوري بعد الدفع</div>
+      <div>✅ 7-day money back guarantee</div>
+      <div>🔐 Secure payment process</div>
+      <div>📦 Instant download after payment</div>
     </div>
     
     <div class="logo-bar">
@@ -484,29 +484,29 @@
 <div id="modal2" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeProductModal('modal2')">&times;</span>
-    <div class="badge">🔥 40% خصم</div>
+    <div class="badge">🔥 40% OFF</div>
     <img src="https://cdn-icons-png.flaticon.com/512/3767/3767084.png" class="zip-icon" alt="ZIP">
     <div class="file-type">
       <img src="https://img.icons8.com/color/48/video-file.png" width="24" alt="Video">
-      ملف مضغوط (10 جيجا)
+      Compressed File (10GB)
     </div>
-    <p>المحتوى: 5 ملفات جاهزة</p>
-    <p style="font-size:14px; color:#666;">يشمل: 800+ فيديو عالي الدقة، ملفات صوتية، قوالب ومحتوى حصري</p>
+    <p>Content: 5 ready-to-use files</p>
+    <p style="font-size:14px; color:#666;">Includes: 800+ HD videos, audio files, templates and exclusive content</p>
     
     <div class="price-box">
-      <div>السعر الأصلي: <strong style="text-decoration:line-through; color:#999;">$99.99</strong></div>
-      <div>السعر بعد الخصم: <strong style="color:var(--accent-color);">$59.99</strong></div>
-      <div class="secure-note">🔒 دفع آمن وتوصيل مشفر</div>
+      <div>Original Price: <strong style="text-decoration:line-through; color:#999;">$99.99</strong></div>
+      <div>Discounted Price: <strong style="color:var(--accent-color);">$59.99</strong></div>
+      <div class="secure-note">🔒 Secure payment & encrypted delivery</div>
     </div>
     
     <button class="pay-button" onclick="handlePurchase(this, 'https://buy.stripe.com/test_7sI6pD7kW0pC2iA4gg')">
-      🛡️ احصل على الوصول الفوري
+      🛡️ Get Instant Access
     </button>
     
     <div class="trust-box">
-      <div>✅ ضمان استرداد الأموال لمدة 7 أيام</div>
-      <div>🔐 عملية دفع آمنة</div>
-      <div>📦 تحميل فوري بعد الدفع</div>
+      <div>✅ 7-day money back guarantee</div>
+      <div>🔐 Secure payment process</div>
+      <div>📦 Instant download after payment</div>
     </div>
     
     <div class="logo-bar">
@@ -521,29 +521,29 @@
 <div id="modal3" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeProductModal('modal3')">&times;</span>
-    <div class="badge">🔥 45% خصم</div>
+    <div class="badge">🔥 45% OFF</div>
     <img src="https://cdn-icons-png.flaticon.com/512/3767/3767084.png" class="zip-icon" alt="ZIP">
     <div class="file-type">
       <img src="https://img.icons8.com/color/48/video-file.png" width="24" alt="Video">
-      ملف مضغوط (15 جيجا)
+      Compressed File (15GB)
     </div>
-    <p>المحتوى: 8 ملفات جاهزة</p>
-    <p style="font-size:14px; color:#666;">يشمل: 1200+ فيديو عالي الدقة، ملفات صوتية، قوالب ومحتوى حصري</p>
+    <p>Content: 8 ready-to-use files</p>
+    <p style="font-size:14px; color:#666;">Includes: 1200+ HD videos, audio files, templates and exclusive content</p>
     
     <div class="price-box">
-      <div>السعر الأصلي: <strong style="text-decoration:line-through; color:#999;">$149.99</strong></div>
-      <div>السعر بعد الخصم: <strong style="color:var(--accent-color);">$82.49</strong></div>
-      <div class="secure-note">🔒 دفع آمن وتوصيل مشفر</div>
+      <div>Original Price: <strong style="text-decoration:line-through; color:#999;">$149.99</strong></div>
+      <div>Discounted Price: <strong style="color:var(--accent-color);">$82.49</strong></div>
+      <div class="secure-note">🔒 Secure payment & encrypted delivery</div>
     </div>
     
     <button class="pay-button" onclick="handlePurchase(this, 'https://buy.stripe.com/test_3cs6pD0P2gM6c1e8wz')">
-      🛡️ احصل على الوصول الفوري
+      🛡️ Get Instant Access
     </button>
     
     <div class="trust-box">
-      <div>✅ ضمان استرداد الأموال لمدة 7 أيام</div>
-      <div>🔐 عملية دفع آمنة</div>
-      <div>📦 تحميل فوري بعد الدفع</div>
+      <div>✅ 7-day money back guarantee</div>
+      <div>🔐 Secure payment process</div>
+      <div>📦 Instant download after payment</div>
     </div>
     
     <div class="logo-bar">
@@ -558,29 +558,29 @@
 <div id="modal4" class="modal">
   <div class="modal-content">
     <span class="close" onclick="closeProductModal('modal4')">&times;</span>
-    <div class="badge">🔥 50% خصم</div>
+    <div class="badge">🔥 50% OFF</div>
     <img src="https://cdn-icons-png.flaticon.com/512/3767/3767084.png" class="zip-icon" alt="ZIP">
     <div class="file-type">
       <img src="https://img.icons8.com/color/48/folder-invoices--v1.png" width="24" alt="Folder">
-      حزمة المونتاج (خاصة)
+      Premium Editing Pack
     </div>
-    <p>المحتوى: 5 ملفات مونتاج جاهزة</p>
-    <p style="font-size:14px; color:#666;">يشمل: 5 ملفات مونتاج جاهزة، تأثيرات خاصة، قوالب ومحتوى تحرير مميز</p>
+    <p>Content: 5 ready-to-use editing files</p>
+    <p style="font-size:14px; color:#666;">Includes: 5 editing templates, special effects, and premium content</p>
     
     <div class="price-box">
-      <div>السعر الأصلي: <strong style="text-decoration:line-through; color:#999;">$79.99</strong></div>
-      <div>السعر بعد الخصم: <strong style="color:var(--accent-color);">$39.99</strong></div>
-      <div class="secure-note">🔒 دفع آمن وتوصيل مشفر</div>
+      <div>Original Price: <strong style="text-decoration:line-through; color:#999;">$79.99</strong></div>
+      <div>Discounted Price: <strong style="color:var(--accent-color);">$39.99</strong></div>
+      <div class="secure-note">🔒 Secure payment & encrypted delivery</div>
     </div>
     
     <button class="pay-button" onclick="handlePurchase(this, 'https://buy.stripe.com/test_fZe7vD2kA2o2g3U288')">
-      🛡️ احصل على الوصول الفوري
+      🛡️ Get Instant Access
     </button>
     
     <div class="trust-box">
-      <div>✅ ضمان استرداد الأموال لمدة 7 أيام</div>
-      <div>🔐 عملية دفع آمنة</div>
-      <div>📦 تحميل فوري بعد الدفع</div>
+      <div>✅ 7-day money back guarantee</div>
+      <div>🔐 Secure payment process</div>
+      <div>📦 Instant download after payment</div>
     </div>
     
     <div class="logo-bar">
@@ -593,58 +593,58 @@
 
 <!-- Testimonials -->
 <div style="margin: 40px auto; max-width: 500px;" data-aos="fade-up">
-  <h3 style="color: var(--primary-color); font-weight: 600; text-align: right;">💬 آراء عملائنا:</h3>
+  <h3 style="color: var(--primary-color); font-weight: 600; text-align: center;">💬 Customer Reviews:</h3>
   
   <div class="testimonial">
-    "ملفات رائعة، استلمتها فورًا بعد الدفع. أوصي بها بشدة!"
-    <strong>- أحمد من الرياض</strong>
+    "Amazing files, received them immediately after payment. Highly recommended!"
+    <strong>- John from New York</strong>
   </div>
   
   <div class="testimonial">
-    "دعم رائع ومحتوى غني مقابل السعر."
-    <strong>- سارة من الإمارات</strong>
+    "Great support and rich content for the price."
+    <strong>- Sarah from London</strong>
   </div>
 </div>
 
 <!-- FAQ -->
-<div style="margin: 40px auto; max-width: 500px; text-align: right;" data-aos="fade-up">
-  <h3 style="color: var(--primary-color); font-weight: 600;">❓ الأسئلة الشائعة:</h3>
+<div style="margin: 40px auto; max-width: 500px; text-align: center;" data-aos="fade-up">
+  <h3 style="color: var(--primary-color); font-weight: 600;">❓ Frequently Asked Questions:</h3>
   
   <details>
-    <summary><b>كيف أحصل على الملفات بعد الشراء؟</b></summary>
-    <p>بعد الدفع بنجاح، سيتم توجيهك إلى صفحة التحميل وسيتم إرسال رابط التحميل إلى بريدك الإلكتروني.</p>
+    <summary><b>How do I get the files after purchase?</b></summary>
+    <p>After successful payment, you'll be redirected to the download page and a download link will be sent to your email.</p>
   </details>
   
   <details>
-    <summary><b>هل عملية الدفع آمنة؟</b></summary>
-    <p>نعم، جميع عمليات الدفع تتم عبر Stripe باستخدام تشفير SSL ومعايير أمان PCI.</p>
+    <summary><b>Is the payment process secure?</b></summary>
+    <p>Yes, all payments are processed through Stripe using SSL encryption and PCI security standards.</p>
   </details>
   
   <details>
-    <summary><b>هل يمكنني استرداد المال؟</b></summary>
-    <p>بالطبع! نقدم ضمان استرداد الأموال لمدة 7 أيام إذا لم تكن راضيًا.</p>
+    <summary><b>Can I get a refund?</b></summary>
+    <p>Absolutely! We offer a 7-day money back guarantee if you're not satisfied.</p>
   </details>
   
   <details>
-    <summary><b>هل تقدمون دعمًا فنيًا؟</b></summary>
-    <p>نعم! يمكنك التواصل معنا في أي وقت عبر Telegram أو البريد الإلكتروني.</p>
+    <summary><b>Do you offer technical support?</b></summary>
+    <p>Yes! You can contact us anytime via Telegram or email.</p>
   </details>
 </div>
 
 <!-- Contact -->
 <div class="contact-box" data-aos="fade-up">
-  <a href="https://t.me/yncyl" target="_blank" title="تواصل عبر Telegram">
+  <a href="https://t.me/yncyl" target="_blank" title="Contact via Telegram">
     <img src="https://img.icons8.com/color/48/telegram-app--v1.png" class="telegram-icon" alt="Telegram">
   </a>
-  <p>الدعم الفني: <a href="mailto:ademnebti460@gmail.com">ademnebti460@gmail.com</a></p>
+  <p>Technical Support: <a href="mailto:ademnebti460@gmail.com">ademnebti460@gmail.com</a></p>
 </div>
 
 <!-- Footer -->
 <div style="margin: 30px 0; font-size: 13px; color: #666;" data-aos="fade-up">
-  <p>©️ 2025 أرشيف الوسائط. جميع الحقوق محفوظة.</p>
+  <p>©️ 2025 Media Archive. All rights reserved.</p>
   <p>
-    <a href="privacy.html" style="color: var(--primary-color);">سياسة الخصوصية</a> • 
-    <a href="refund.html" style="color: var(--primary-color);">سياسة الاسترداد</a>
+    <a href="privacy.html" style="color: var(--primary-color);">Privacy Policy</a> • 
+    <a href="refund.html" style="color: var(--primary-color);">Refund Policy</a>
   </p>
 </div>
 
@@ -660,7 +660,7 @@
       
       if (diff <= 0) {
         clearInterval(timer);
-        document.querySelector('.timer').textContent = "انتهى العرض! 🚫";
+        document.querySelector('.timer').textContent = "Offer expired! 🚫";
         return;
       }
       
@@ -694,7 +694,7 @@
   
   // Purchase Handler
   function handlePurchase(btn, url) {
-    btn.innerHTML = 'جاري المعالجة...';
+    btn.innerHTML = 'Processing...';
     btn.disabled = true;
     
     setTimeout(() => {
@@ -708,7 +708,7 @@
     
     // Show popup after 3 seconds
     setTimeout(() => {
-      alert('⚡ أكثر من 1200 شخص استلموا ملفاتهم بنجاح هذا الأسبوع!');
+      alert('⚡ Over 1200 people successfully received their files this week!');
     }, 3000);
   };
 </script>
