@@ -341,35 +341,9 @@
     .contact-box a:hover {
       text-decoration: underline;
     }
-    
-    /* Floating WhatsApp */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      z-index: 100;
-    }
-    
-    .whatsapp-float img {
-      width: 50px;
-      border-radius: 50%;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s;
-    }
-    
-    .whatsapp-float img:hover {
-      transform: scale(1.1);
-    }
   </style>
 </head>
 <body>
-
-<!-- WhatsApp floating button -->
-<div class="whatsapp-float">
-  <a href="https://wa.me/XXXXXXXXXXX" target="_blank">
-    <img src="https://img.icons8.com/color/48/whatsapp--v1.png" alt="WhatsApp">
-  </a>
-</div>
 
 <!-- Header -->
 <div class="header" data-aos="fade-down">
@@ -682,6 +656,7 @@
   function closeProductModal(id) {
     document.getElementById(id).style.display = 'none';
     document.body.style.overflow = 'auto';
+    resetPayButtons(); // Reset all pay buttons when closing modal
   }
   
   // Close modal when clicking outside
@@ -689,7 +664,17 @@
     if (event.target.className === 'modal') {
       event.target.style.display = 'none';
       document.body.style.overflow = 'auto';
+      resetPayButtons(); // Reset all pay buttons when closing modal
     }
+  }
+  
+  // Reset all pay buttons to their initial state
+  function resetPayButtons() {
+    const buttons = document.querySelectorAll('.pay-button');
+    buttons.forEach(btn => {
+      btn.innerHTML = '🛡️ Get Instant Access';
+      btn.disabled = false;
+    });
   }
   
   // Purchase Handler
@@ -697,19 +682,13 @@
     btn.innerHTML = 'Processing...';
     btn.disabled = true;
     
-    setTimeout(() => {
-      window.location.href = url;
-    }, 1000);
+    // Open URL in new tab instead of current window
+    window.open(url, '_blank');
   }
   
   // Initialize
   window.onload = function() {
     startCountdown();
-    
-    // Show popup after 3 seconds
-    setTimeout(() => {
-      alert('⚡ Over 1200 people successfully received their files this week!');
-    }, 3000);
   };
 </script>
 
