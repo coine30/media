@@ -682,8 +682,17 @@
     btn.innerHTML = 'Processing...';
     btn.disabled = true;
     
-    // Open URL in new tab instead of current window
-    window.open(url, '_blank');
+    // Open URL in new tab and keep original page active
+    const newWindow = window.open(url, '_blank');
+    if (newWindow) {
+      newWindow.focus();
+    }
+    
+    // Reset button after short delay (in case new window was blocked)
+    setTimeout(() => {
+      btn.innerHTML = '🛡️ Get Instant Access';
+      btn.disabled = false;
+    }, 2000);
   }
   
   // Initialize
